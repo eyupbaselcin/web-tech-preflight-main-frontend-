@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Ekle</title>
+  <link rel="stylesheet" href="css/2416501049.css">
+  <script type="module" src="js/event-form.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Etkinlik Ekle</h1>
+    <nav>
+      <a href="etkinlikler.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-ekle.html" aria-current="page">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="yardim">Yıldızlı (*) alanlar zorunludur. Bu sprintte form veri kaydetmez; sonuç aşağıda gösterilir.</p>
+    <form id="etkinlik-formu" novalidate>
+      <div class="alan">
+        <label for="ad">Etkinlik adı <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input type="text" id="ad" name="ad" placeholder="Örn. Kariyer Günleri" aria-describedby="ad-hata">
+        <span class="hata" id="ad-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="kategori">Kategori <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="kategori" name="kategori" aria-describedby="kategori-hata">
+          <option value="">Seçiniz</option>
+          <option value="Seminer">Seminer</option>
+          <option value="Atölye">Atölye</option>
+          <option value="Söyleşi">Söyleşi</option>
+        </select>
+        <span class="hata" id="kategori-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="tarih">Tarih <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input type="date" id="tarih" name="tarih" aria-describedby="tarih-hata">
+        <span class="hata" id="tarih-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="saat">Saat <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input type="time" id="saat" name="saat" aria-describedby="saat-hata">
+        <span class="hata" id="saat-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="yer">Yer <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input type="text" id="yer" name="yer" placeholder="Örn. A Blok Konferans Salonu" aria-describedby="yer-hata">
+        <span class="hata" id="yer-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="kontenjan">Kontenjan (isteğe bağlı)</label>
+        <input type="number" id="kontenjan" name="kontenjan" aria-describedby="kontenjan-hata">
+        <span class="hata" id="kontenjan-hata"></span>
+      </div>
+
+      <div class="alan">
+        <label for="aciklama">Açıklama</label>
+        <textarea id="aciklama" name="aciklama" rows="4"></textarea>
+      </div>
+
+      <button type="submit">Kaydet</button>
+    </form>
+    <div id="form-mesaj" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <p>Eyüp - Başelçin - 2416501043</p>
+  </footer>
+</body>
+</html>

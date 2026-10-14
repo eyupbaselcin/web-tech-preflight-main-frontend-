@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Ekle</title>
+</head>
+<body>
+  <header>
+    <h1>Etkinlik Ekle</h1>
+    <nav>
+      <a href="etkinlikler.html">Ana Sayfa</a>
+      <a href="etkinlik-detay.html">Detay</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <form>
+      <label for="ad">Etkinlik Adı</label>
+      <input type="text" id="ad" name="ad" required>
+
+      <label for="kategori">Kategori</label>
+      <select id="kategori" name="kategori">
+        <option value="seminer">Seminer</option>
+        <option value="atolye">Atölye</option>
+        <option value="konferans">Konferans</option>
+        <option value="sosyal">Sosyal</option>
+      </select>
+
+      <label for="tarih">Tarih / Saat</label>
+      <input type="datetime-local" id="tarih" name="tarih" required>
+
+      <label for="aciklama">Açıklama</label>
+      <textarea id="aciklama" name="aciklama" rows="5"></textarea>
+
+      <button type="submit">Kaydet</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Eyüp Başelçin - 2416501043 - 2026</p>
+  </footer>
+</body>
+</html>

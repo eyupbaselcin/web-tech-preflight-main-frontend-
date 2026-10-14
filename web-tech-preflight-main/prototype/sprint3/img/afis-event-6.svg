@@ -1,0 +1,29 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#be123c"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#bg)"/>
+
+  <rect x="40" y="40" width="520" height="720" fill="none" stroke="#fda4af" stroke-width="3"/>
+
+  <text x="300" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#fda4af" letter-spacing="4">SDÜ KAMPÜS ETKİNLİK</text>
+
+  <circle cx="300" cy="300" r="90" fill="#881337" stroke="#fda4af" stroke-width="4"/>
+  <g transform="translate(255,255)">
+    <circle cx="45" cy="36" r="26" fill="#fda4af"/><rect x="33" y="60" width="24" height="9" fill="#fda4af"/><rect x="37" y="72" width="16" height="7" fill="#fda4af"/>
+  </g>
+
+  <text x="300" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#ffffff">Girişimcilik</text>
+  <text x="300" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#ffffff">Deneyimleri</text>
+
+  <line x1="180" y1="560" x2="420" y2="560" stroke="#fda4af" stroke-width="2"/>
+
+  <text x="300" y="610" text-anchor="middle" font-family="Verdana, sans-serif" font-size="22" fill="#e2e8f0">17 Kasım 2026 · 16:00</text>
+  <text x="300" y="645" text-anchor="middle" font-family="Verdana, sans-serif" font-size="22" fill="#e2e8f0">B Blok Salon</text>
+
+  <text x="300" y="720" text-anchor="middle" font-family="Verdana, sans-serif" font-size="16" fill="#94a3b8">Kontenjan: 100 kişi</text>
+</svg>

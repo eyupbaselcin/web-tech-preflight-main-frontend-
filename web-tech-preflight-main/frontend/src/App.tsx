@@ -3,11 +3,7 @@ import "./App.css";
 import { events } from "./data/events";
 import type { Category } from "./types/campus-event";
 import type { PageName } from "./types/page";
-import {
-  filterByCategory,
-  findEventById,
-  searchEvents,
-} from "./utils/filter-events";
+import { filterByCategory, findEventById, searchEvents } from "./utils/filter-events";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
@@ -27,24 +23,19 @@ function App() {
     setSelectedId(id);
   }
 
-  const upcoming = [...events]
-    .sort((a, b) => a.date.localeCompare(b.date))
-    .slice(0, 2);
+  const upcoming = [...events].sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2);
   const categories = [...new Set(events.map((e) => e.category))];
   const filtered = filterByCategory(searchEvents(events, searchText), category);
-  const selected =
-    selectedId !== null ? findEventById(events, selectedId) : undefined;
-  const showDetail = (id: string) => go("detail", id);
+  const selected = selectedId !== null ? findEventById(events, selectedId) : undefined;
 
-  let heading = "Kampüs Etkinlikleri";
-  if (page === "events") heading = "Tüm Etkinlikler";
-  if (page === "add") heading = "Etkinlik Ekle";
-  if (page === "update") heading = "Etkinlik Güncelle";
-  if (page === "detail") {
-    heading = selected ? selected.title : "Etkinlik bulunamadı";
-  }
-
-  const title = page === "home" ? "Ana Sayfa" : heading;
+  const headings: Record<PageName, string> = {
+    home: "Kampüs Etkinlikleri",
+    events: "Tüm Etkinlikler",
+    detail: selected ? selected.title : "Etkinlik bulunamadı",
+    add: "Etkinlik Ekle",
+    update: "Etkinlik Güncelle",
+  };
+  const title = page === "home" ? "Ana Sayfa" : headings[page];
 
   useEffect(() => {
     document.title = `Kampüs Etkinlikleri — ${title}`;
@@ -52,9 +43,12 @@ function App() {
 
   return (
     <>
-      <Header title={heading}>
-        <Navigation current={page} onNavigate={go} />
-      </Header>
+      <div className="site-header">
+        <div className="header-content">
+          <Header title={headings[page]} />
+          <Navigation current={page} onNavigate={go} />
+        </div>
+      </div>
 
       <main className="page-shell">
         {page === "home" && (
@@ -63,10 +57,7 @@ function App() {
               <div>
                 <p className="eyebrow">KAMPÜSTE NELER OLUYOR?</p>
                 <h2 id="home-title">Fikirler burada buluşuyor.</h2>
-                <p>
-                  Seminer, atölye ve söyleşileri keşfet; kampüs hayatına
-                  sen de katıl.
-                </p>
+                <p>Seminer, atölye ve söyleşileri keşfet; kampüs hayatına sen de katıl.</p>
               </div>
               <button className="btn-primary" onClick={() => go("events")}>
                 Etkinlikleri keşfet <span aria-hidden="true">→</span>
@@ -79,7 +70,7 @@ function App() {
               </div>
               <span className="event-count">{upcoming.length} etkinlik</span>
             </div>
-            <EventList events={upcoming} onShowDetail={showDetail} />
+            <EventList events={upcoming} onShowDetail={(id) => go("detail", id)} />
           </>
         )}
 
@@ -101,13 +92,11 @@ function App() {
               onCategoryChange={setCategory}
             />
             {filtered.length > 0 && (
-              <p id="sonuc" className="result-count" aria-live="polite">
-                {filtered.length} etkinlik listeleniyor.
-              </p>
+              <p className="result-count">{filtered.length} etkinlik listeleniyor.</p>
             )}
             <EventList
               events={filtered}
-              onShowDetail={showDetail}
+              onShowDetail={(id) => go("detail", id)}
               emptyText="Aramanıza uygun etkinlik bulunamadı."
             />
           </>
@@ -116,13 +105,7 @@ function App() {
         {page === "detail" && !selected && (
           <div className="hata-kutusu">
             <p>İstenen etkinlik bulunamadı. Listeden bir etkinlik seçin.</p>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                go("events");
-              }}
-            >
+            <a href="#" onClick={(e) => { e.preventDefault(); go("events"); }}>
               ← Listeye dön
             </a>
           </div>
@@ -137,10 +120,7 @@ function App() {
         )}
 
         {(page === "add" || page === "update") && (
-          <EventForm
-            onSubmit={() => window.scrollTo(0, 0)}
-            submitLabel={page === "add" ? "Kaydet" : "Güncelle"}
-          />
+          <EventForm onSubmit={() => window.scrollTo(0, 0)} />
         )}
       </main>
 

@@ -2,10 +2,9 @@ import { CATEGORIES } from "../../types/campus-event";
 
 interface EventFormProps {
   onSubmit: () => void;
-  submitLabel?: string;
 }
 
-function EventForm({ onSubmit, submitLabel = "Kaydet" }: EventFormProps) {
+function EventForm({ onSubmit }: EventFormProps) {
   return (
     <>
       <p className="yardim">
@@ -73,7 +72,7 @@ function EventForm({ onSubmit, submitLabel = "Kaydet" }: EventFormProps) {
           <label htmlFor="description">Açıklama</label>
           <textarea id="description" rows={5} />
         </div>
-        <button type="submit">{submitLabel}</button>
+        <button type="submit">Kaydet</button>
       </form>
     </>
   );
